@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "./connection.php";
+
 /** 
  *  errors 
  *  Please enter a name 
@@ -12,8 +12,14 @@ require "./connection.php";
  * */
 function dowork()
 {
-    require "./connection.php";
+    require_once "./connection.php";
     if (isset($_POST['submit'])) {
+
+        if($_POST['submit']=="Cancel"){
+            header("Location: index.php");
+            die();
+        }
+
         $name = filter_input(INPUT_POST, "name", FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[a-zA-Z][a-zA-Z\s]*/")));
 
         $salary = filter_input(INPUT_POST, "salary", FILTER_VALIDATE_INT);
@@ -24,7 +30,7 @@ function dowork()
         // var_dump( !is_int($salary));
         //  var_dump(preg_match_all("/[a-zA-Z][a-zA-Z\s]*/",$name));
         // die();
-        if (empty($name) || empty($address) || empty($salary) || !is_int($salary) || !preg_match("/[a-zA-Z][a-zA-Z\s]*/", $name)) {
+        if (empty($name) || empty($address) || empty($salary) || !is_int($salary) || !preg_match("/[a-zA-Z][a-zA-Z]*/", $name)) {
             // var_dump(!preg_match("/[a-zA-Z][a-zA-Z\s]*$/", $name) || $name === false);
             // die();
 
@@ -86,8 +92,6 @@ function dowork()
     }
 }
 
-function check_first_is_number(string $name)
-{
-}
+
 
 header(dowork());

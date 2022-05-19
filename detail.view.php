@@ -30,7 +30,9 @@
         <div>
             <?php echo $i['salary']; ?>
         </div>
-
+        <div>
+            <a href='index.php' class='btn btn-primary text-decoration-none'>Back</a>
+        </div>
     </div>
 </body>
 </html>

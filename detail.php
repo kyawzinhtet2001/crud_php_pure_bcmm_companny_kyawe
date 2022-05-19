@@ -1,8 +1,8 @@
 <?php
 
 
-    require "./connection.php";
-    require "./helper.php";
+    require_once "./connection.php";
+    require_once "./helper.php";
     set_exception_handler("handle");
 set_error_handler('handle');
     $id=check_id();
@@ -15,9 +15,11 @@ set_error_handler('handle');
 
     if($prepare->execute()){
         $result=$prepare->get_result();
-        if(mysqli_num_rows($result)){
+        if(mysqli_num_rows($result)>0){
             $i=mysqli_fetch_assoc($result);
             include_once "./detail.view.php";
+        }else{
+            throw new Exception();
         }
     }else{
         throw new Exception();

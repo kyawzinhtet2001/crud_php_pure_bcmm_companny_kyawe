@@ -1,7 +1,4 @@
-<?php
-    session_start();
-    // var_dump($_SESSION);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +13,13 @@
 <body>
     
     <div class="container-md p-5" >
-        <div class="h2 lh-lg p-2"> Create Record</div>
-        <div class="h5 text-decoration-none p-2"> Please fill this form and submit to add employee to database</div>
+        <div class="h2 lh-lg p-2"> Update Record</div>
+        <div class="h5 text-decoration-none p-2"> Please edit the input values and submit to update employee to database</div>
         <form action="update.php" method="post">
             <input type='hidden' name="id" value=<?php echo $data['id'] ?>>
             <div class="my-2">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" id="name" placeholder="Name" class="form-control" value=<?php  echo $data['name']?>>
+                <input type="text" name="name" pattern="[a-zA-Z][a-zA-Z\s]*" id="name" placeholder="Name" class="form-control" value='<?php  $name=$data['name'];echo "$name";?>'>
                 <?php 
                 if (isset($error["name"]))
                 echo "<p class='text-danger'>" .$error["name"].'</p>';
@@ -46,10 +43,9 @@
             </div>
             <div class="my-2">
                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary">
-                <input type="reset" name="reset" id="reset" value="Cencel" class="btn btn-light">
+                <input type="submit" name="submit" id="reset" value="Cancel" class="btn btn-light">
             </div>
         </form>
     </div>
-    <?php session_destroy() ?>
 </body>
 </html>

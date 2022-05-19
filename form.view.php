@@ -20,7 +20,7 @@
         <form action="create_employee.php" method="post">
             <div class="my-2">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" id="name" placeholder="Name" class="form-control" value=<?php if(isset($_SESSION['input']['name'])) echo $_SESSION['input']['name']?>>
+                <input type="text" name="name" id="name" placeholder="Name" pattern="[a-zA-Z][a-zA-Z\s]*" class="form-control" value='<?php if(isset($_SESSION['input']['name'])) echo $_SESSION['input']['name']?>'>
                 <?php 
                 if (isset($_SESSION["error"]["name"]))
                 echo "<p class='text-danger'>" .$_SESSION["error"]["name"].'</p>';
@@ -44,7 +44,7 @@
             </div>
             <div class="my-2">
                 <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-primary">
-                <input type="reset" name="reset" id="reset" value="Cencel" class="btn btn-light">
+                <input type="submit" name="submit" id="reset" value="Cancel" class="btn btn-light">
             </div>
         </form>
     </div>

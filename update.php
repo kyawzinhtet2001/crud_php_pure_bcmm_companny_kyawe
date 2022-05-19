@@ -1,6 +1,6 @@
 <?php
-require "./connection.php";
-require "./helper.php";
+require_once "./connection.php";
+require_once "./helper.php";
 set_exception_handler("handle");
 set_error_handler('handle');
 function doGet(int $i)
@@ -25,6 +25,8 @@ function doGet(int $i)
 
                 $data = mysqli_fetch_assoc($result);
                 include_once "./update.view.php";
+            }else{
+                throw new Exception();
             }
         } else {
             throw new Exception();
@@ -50,7 +52,10 @@ function doPost(int $id)
      * */
     global $connection;
     try {
-        
+        if($_POST['submit']=="Cancel"){
+            header("Location: index.php");
+            die();
+        }
         if (isset($_POST['submit'])) {
             $name = filter_input(INPUT_POST, "name", FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/[a-zA-Z][a-zA-Z\s]*/")));
             // $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
@@ -119,7 +124,7 @@ function doPost(int $id)
 
             $prepare->bind_param('ssii', $name, $address, $salary,$id);
             if ($prepare->execute()) {
-                var_dump("Reach here");
+                // var_dump("Reach here");
                 // printf("%d Row inserted.\n", $prepare->affected_rows);
                 mysqli_close($connection);
                 // die();
@@ -152,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if ($id === false) {
         throw new Exception();
     }
-    var_dump($id);
+    // var_dump($id);
     header(doPost($id));
 }
 

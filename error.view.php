@@ -14,8 +14,8 @@
         <hr>
     </p>
     <p class='p-3'>
-        <div class="text-white p-5 bg-danger">
-            Sorry You have a Invilid Request.. Please <a href="index.php" class='fs-bold text-light'>go back</a> and Try Again...
+        <div class="text-danger p-5 alert alert-danger">
+            Sorry You have a Invilid Request.. Please <a href="index.php" class='fw-bold text-danger'>go back</a> and Try Again...
         </div>
     </p>
 </body>
