@@ -71,12 +71,12 @@ require "connection.php";
             })
 
             document.getElementById("search").onkeyup = (event) => {
-                console.log(event.target.value);
+                // console.log(event.target.value);
                 if (event.target.value) {
                     search();
 
                 }
-                console.log(event.target.value);
+                // console.log(event.target.value);
                 let name_cols = document.getElementsByName("name");
                 for (let name of name_cols) {
                     name.parentElement.className = "";
@@ -96,15 +96,15 @@ require "connection.php";
                     },
                     success: (data) => {
                         let name_cols = document.getElementsByName("name");
-                        console.log(name_cols.length);
-                        console.log(data);
+                        // console.log(name_cols.length);
+                        // console.log(data);
                         if (!data) {
                             let textbox = document.getElementById("search");
                             textbox.className += " bg-warning";
                             return;
                         }
                         let col = JSON.parse(data);
-                        console.log(col);
+                        // console.log(col);
                         if (col.length !== 0) {
                             let textbox = document.getElementById("search");
                             textbox.className = "float-start form-control w-50";
