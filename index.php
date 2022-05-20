@@ -30,7 +30,7 @@ require "connection.php";
         <input type="text" id="search" placeholder="please enter something to search"
             class="float-start form-control w-50">
         <a href="./form.view.php" class='btn btn-success float-end my-3 '>Create Employee</a>
-        <table class="table  table-responsive " id="table">
+        <table class="table  table-responsive table-striped" id="table">
             <?php
             $sql = 'Select * from employee;';
             $result = mysqli_query($connection, $sql);
