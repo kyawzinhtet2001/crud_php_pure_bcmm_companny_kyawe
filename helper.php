@@ -18,3 +18,9 @@ function check_id_post(){
 function handle($e){
     header("Location: error.view.php");
 }
+
+
+function login($name){
+    $_SESSION['logged_in']=true;
+    $_SESSION['logged_in_name']=$name;
+}

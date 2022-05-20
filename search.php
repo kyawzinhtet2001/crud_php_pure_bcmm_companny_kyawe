@@ -1,6 +1,8 @@
 <?php
 
     require_once "connection.php";
+    require_once "./authentication.php";
+
 
     function search(string $key){
         $key.="%";

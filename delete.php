@@ -1,9 +1,11 @@
 <?php
 
+require_once "./authentication.php";
 require_once "./connection.php";
-require_once "./helper.php";
-set_exception_handler("handle");
-set_error_handler('handle');
+
+// require_once "./helper.php";
+// set_exception_handler("handle");
+// set_error_handler('handle');
 function dodelete(int $i)
 {
     $sql = "DELETE FROM employee WHERE id=?";

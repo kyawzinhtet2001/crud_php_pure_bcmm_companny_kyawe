@@ -1,8 +1,10 @@
 <?php
 require_once "./connection.php";
-require_once "./helper.php";
-set_exception_handler("handle");
-set_error_handler('handle');
+require_once "./authentication.php";
+
+// require_once "./helper.php";
+// set_exception_handler("handle");
+// set_error_handler('handle');
 function doGet(int $i)
 {
     try {

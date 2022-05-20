@@ -48,6 +48,8 @@
             </div>
         </form>
     </div>
-    <?php session_destroy() ?>
+    <?php $_SESSION['error']=[];
+        $_SESSION['input']=[];
+    ?>
 </body>
 </html>
