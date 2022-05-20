@@ -17,11 +17,14 @@
         <form class='p-2' action="./signup.php" method="post" id="form_signup">
             <div class="m-2">
                 <label class="form-label" for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="UserName" value="<?php if(isset($name)) echo $name;?>" />
-                <?php if(isset($error)){
-                    echo '<div class="text-danger" id="error-name">'. $error["name"].' </div>';
-                }
-                ?>
+                <input type="text" class="form-control" name="name" id="name" placeholder="UserName" value="<?php if (isset($name)) echo $name; ?>" />
+                <div class="text-danger" id="error-name">
+                    <?php if (isset($error)) {
+                        echo '' . $error["name"] . ' ';
+                    }
+
+                    ?>
+                </div>
             </div>
             <div class="m-2">
                 <label class="form-label" for="password">Password</label>
@@ -35,7 +38,7 @@
             </div>
             <div class="m-2">
                 <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Sign Up" />
-                <input type="reset"  class="btn btn-primary" id="reset" value="Reset" />
+                <input type="reset" class="btn btn-primary" id="reset" value="Reset" />
             </div>
         </form>
         <div class="m-2"> Already have a account? <a href="./login.php" class='text-decoration-none'>Login here.</a> </div>
@@ -50,28 +53,29 @@
                 let name_value = name.value;
                 let password_value = password.value;
                 let confirm_password_value = confirm_password.value;
-                if (name_value === "" || password_value === "" || password_value.length<7 || confirm_password_value === "" || password_value !== confirm_password_value) {
-                    console.log("ok");
+                console.log(name_value === "" || password_value === "" || password_value.length < 7 || confirm_password_value === "" || password_value !== confirm_password_value);
+                if (name_value === "" || password_value === "" || password_value.length < 7 || confirm_password_value === "" || password_value !== confirm_password_value) {
+
                     if (name_value === "") {
                         let nameerror = document.getElementById("error-name");
-                        nameerror.innerHTML = "Name is need to be not empty."
+                        name.className=""
+                        nameerror.innerHTML = "Please Enter Name."
                     }
                     if (password_value === "") {
                         let nameerror = document.getElementById("error-password");
-                        nameerror.innerHTML = "Password is need to be not empty."
-                    }else if(password_value<7){
+                        nameerror.innerHTML = "Please Enter Password."
+                    } else if (password_value.length < 7) {
                         let nameerror = document.getElementById("error-password");
                         nameerror.innerHTML = "Password must be 6 characters."
                     }
                     if (confirm_password_value === "") {
                         let nameerror = document.getElementById("error-confirm-password");
-                        nameerror.innerHTML = "ConfirmPassword is need to be not empty."
-                    }
-                    if ( confirm_password_value !== "" && password_value !== confirm_password_value) {
+                        nameerror.innerHTML = "Please Enter ConfirmPassword."
+                    }else if (confirm_password_value !== "" && password_value !== confirm_password_value) {
                         // let passworderror = document.getElementById("error-password");
                         // passworderror.innerHTML = "Password not same with ConfirmPassword"
                         let password_confirmerror = document.getElementById("error-confirm-password");
-                        password_confirmerror.innerHTML = "ConfirmPassword is same with Password."
+                        password_confirmerror.innerHTML = "Password did not match."
                     }
                     event.preventDefault();
                 }
@@ -96,13 +100,13 @@
                 }
             }
 
-            let reset=document.getElementById("reset");
-        reset.onclick=(e)=>{
-            e.preventDefault();
-            name.value="";
-            password.value="";
-            confirm_password="";
-        }
+            let reset = document.getElementById("reset");
+            reset.onclick = (e) => {
+                e.preventDefault();
+                name.value = "";
+                password.value = "";
+                confirm_password.value = "";
+            }
         </script>
     </div>
 </body>

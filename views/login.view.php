@@ -13,27 +13,30 @@
 <body>
     <div class="container-md">
         <div class="h2 px-4 py-3">Login
-            
+
         </div>
         <hr>
         <div class="h4 py-1 px-4"> Please fill your credential to login</div>
         <form class='p-2' action="./login.php" method="post" id="login">
             <div class="m-2">
                 <label class="form-label" for="name">Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="UserName" value="<?php if(isset($name)) echo $name; ?>" />
-                <?php if(isset($error["name"])){
-                    echo '<div class="text-danger" id="error-name">'. $error["name"].' </div>';
-                }
-                ?>
+                <input type="text" class="form-control" name="name" id="name" placeholder="UserName" value="<?php if (isset($name)) echo $name; ?>" />
+                <div class="text-danger" id="error-name">
+                    <?php if (isset($error["name"])) {
+                        echo '' . $error["name"] . '';
+                    }
+                    ?>
+                </div>
             </div>
             <div class="m-2">
                 <label class="form-label" for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php if(isset($password)) echo $password; ?>" />
-                
-                <?php if(isset($error["password"])){
-                    echo '<div class="text-danger" id="error-password">'. $error["password"].' </div>';
-                }
-                ?>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="<?php if (isset($password)) echo $password; ?>" />
+                <div class="text-danger" id="error-password">
+                    <?php if (isset($error["password"])) {
+                        echo '' . $error["password"] . ' ';
+                    }
+                    ?>
+                </div>
             </div>
             <div class="m-2">
                 <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Login" />
@@ -51,14 +54,15 @@
         signupform.onsubmit = (event) => {
             let name_value = name.value;
             let password_value = password.value;
+            // event.preventDefault();
             if (name_value === "" || password_value === "") {
                 if (name_value === "") {
                     let nameerror = document.getElementById("error-name");
-                    nameerror.innerHTML = "Name is need to be not empty."
+                    nameerror.innerHTML = "Please Enter Name";
                 }
                 if (password_value === "") {
                     let nameerror = document.getElementById("error-password");
-                    nameerror.innerHTML = "Password is need to be not empty."
+                    nameerror.innerHTML = "Please enter Password."
                 }
                 event.preventDefault();
             }
@@ -77,11 +81,11 @@
             }
         }
 
-        let reset=document.getElementById("reset");
-        reset.onclick=(e)=>{
+        let reset = document.getElementById("reset");
+        reset.onclick = (e) => {
             e.preventDefault();
-            name.value="";
-            password.value="";
+            name.value = "";
+            password.value = "";
         }
     </script>
 </body>

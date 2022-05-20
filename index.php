@@ -98,6 +98,7 @@ require_once "./authentication.php";
             }
             ?>
         </table>
+        
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
@@ -163,6 +164,9 @@ require_once "./authentication.php";
             }
         </script>
     </div>
+    <footer class='text-center alert alert-success text-black'>
+            2022 all right recevied <a href="#" class='text-decoration-none'>Brycen Myanmar Co.Ltd</a> 
+        </footer>
 </body>
 
 </html>
