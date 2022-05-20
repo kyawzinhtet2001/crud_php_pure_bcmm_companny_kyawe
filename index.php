@@ -71,7 +71,7 @@ require "connection.php";
             })
 
             document.getElementById("search").onkeyup = (event) => {
-                // console.log(event.target.value);
+                // console.log($('#search').val().trim());
                 if (event.target.value) {
                     search();
 

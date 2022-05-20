@@ -29,5 +29,6 @@
 // header("Content-Type: application/json");
 $key=htmlspecialchars($_REQUEST["key"]);
 // var_dump($key);
+
 echo search($key);
 die();
