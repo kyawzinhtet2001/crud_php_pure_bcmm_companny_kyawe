@@ -27,7 +27,7 @@ require "connection.php";
         <h1 class="p-2 py-4"> Employee Details
             <hr>
         </h1>
-        <input type="text" id="search" placeholder="please enter something to search"
+        <input type="text" id="search" placeholder="please enter some name to search"
             class="float-start form-control w-50">
         <a href="./form.view.php" class='btn btn-success float-end my-3 '>Create Employee</a>
         <table class="table  table-responsive table-striped" id="table">
