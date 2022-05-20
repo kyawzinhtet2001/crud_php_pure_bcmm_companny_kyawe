@@ -1,5 +1,9 @@
 <?php
-session_start();
+// session_start();
+
+require_once './unloggedin.php';
+
+
 require "./helper.php";
 function doGet()
 {
@@ -22,7 +26,7 @@ function doPost()
         $result = $prepare->get_result();
         if (mysqli_num_rows($result) > 0) {
             $assoc = mysqli_fetch_assoc($result);
-            if (password_verify($password,$assoc["password"])) {
+            if (password_verify($password, $assoc["password"])) {
                 session_regenerate_id();
                 login($assoc['name']);
                 return "Location: index.php";
@@ -33,20 +37,19 @@ function doPost()
                 include_once "./views/login.view.php";
                 die();
             }
-        }
-        else {
+        } else {
             $error = [
                 "name" => "Username is invalid",
             ];
             include_once "./views/login.view.php";
             die();
         }
-    } 
+    }
 }
 
 
 if (strtolower($_SERVER['REQUEST_METHOD']) === "post") {
-    
+
     header(doPost());
 } else {
     doGet();

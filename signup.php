@@ -1,4 +1,7 @@
 <?php
+    
+    require_once './unloggedin.php';
+
 
     function doGet(){
         include_once './views/signup.view.php';
